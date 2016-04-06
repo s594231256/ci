@@ -27,14 +27,11 @@ PRIMARY KEY (`id`)
 
 
 
-
 create table book_category (
 id int(11) NOT NULL AUTO_INCREMENT,
 category_name varchar(60) NOT NULL DEFAULT '' COMMENT '分类名称',
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='图书分类表';
-
-
 
 
 create table book_borrow (

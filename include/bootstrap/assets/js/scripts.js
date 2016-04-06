@@ -4,7 +4,6 @@ jQuery(document).ready(function() {
     /*
         Fullscreen background
     */
-    $.backstretch("http://localhost/ci/include/bootstrap/assets/img/backgrounds/1.jpg");
 
     /*
         Form validation

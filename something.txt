@@ -1,15 +1,17 @@
-ci¿ò¼Ümvc¿ª·¢Ä£Ê½
-bootstrapÇ°¶Ë¿ª·¢¹¤¾ß°ühtml5Ò³Ãæ
-phpstudy¼¯³É¿ª·¢»·¾³ php5.3£¬apache£¬mysql
+application/config/config.php $config['base_url'] = è‡ªå·±é…ç½®çš„è™šæ‹Ÿä¸»æœº;
+
+ciæ¡†æ¶mvcå¼€å‘æ¨¡å¼
+bootstrapå‰ç«¯å¼€å‘å·¥å…·åŒ…html5é¡µé¢
+phpstudyé›†æˆå¼€å‘ç¯å¢ƒ php5.3ï¼Œapacheï¼Œmysql
 jQuery
 
-²Î¿¼ÎÄÏ×£º
-1£¬3¿îÃâ·ÑµÄBootstrapµÇÂ½Ò³Ãæ http://www.gbtags.com/gb/share/5522.htm
-2£¬bootstrapÖĞÎÄÍø http://www.bootcss.com/
-3£¬ci¿ò¼Ü¹ÙÍø http://codeigniter.org.cn/
+å‚è€ƒæ–‡çŒ®ï¼š
+1ï¼Œ3æ¬¾å…è´¹çš„Bootstrapç™»é™†é¡µé¢ http://www.gbtags.com/gb/share/5522.htm
+2ï¼Œbootstrapä¸­æ–‡ç½‘ http://www.bootcss.com/
+3ï¼Œciæ¡†æ¶å®˜ç½‘ http://codeigniter.org.cn/
 
-application/config/autoload.php×Ô¶¯¼ÓÔØ session
-MY_model¼Ì³ĞCI_model,application/config/autoload.php×Ô¶¯¼ÓÔØmodle
+application/config/autoload.phpè‡ªåŠ¨åŠ è½½ session
+MY_modelç»§æ‰¿CI_model,application/config/autoload.phpè‡ªåŠ¨åŠ è½½modle
 
 ec.admin.1jiajieyangzhen
  
