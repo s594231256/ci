@@ -1,0 +1,53 @@
+CREATE TABLE `user_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL COMMENT '用户名',
+  `password` varchar(255) NOT NULL DEFAULT '' COMMENT '密码',
+  `email` varchar(255) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `status` smallint(6) NOT NULL DEFAULT '1' COMMENT '状态：1-启用，0-禁用，-1-删除',
+  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+  `updatetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
+  `student_code` varchar(50) NOT NULL DEFAULT '0' COMMENT '学号',
+  `user_type` tinyint(10) NOT NULL DEFAULT '2' COMMENT '用户类型：1-管理员，2-学生',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+
+
+create table books (
+id int(11) NOT NULL AUTO_INCREMENT,
+book_name varchar(60) NOT NULL DEFAULT '' COMMENT '书名',
+content varchar(255) NOT NULL DEFAULT '' COMMENT '简介',
+category int(11) NOT NULL DEFAULT 0 COMMENT '分类id',
+status tinyint(10) NOT NULL DEFAULT 1 COMMENT '状态 1-可用，2-借出，3-下架',
+location varchar(60) NOT NULL DEFAULT '' COMMENT '图书位置',
+borrow_num int(11) NOT NULL DEFAULT 0 COMMENT '借出次数',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='图书表';
+
+
+
+
+create table book_category (
+id int(11) NOT NULL AUTO_INCREMENT,
+category_name varchar(60) NOT NULL DEFAULT '' COMMENT '分类名称',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='图书分类表';
+
+
+
+
+create table book_borrow (
+id int(11) NOT NULL AUTO_INCREMENT,
+user_id int(11) NOT NULL DEFAULT 0 COMMENT '用户id',
+book_id int(11) NOT NULL DEFAULT 0 COMMENT '图书id',
+create_time datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+borrow_time datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '借书时间',
+expect_back_time datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '约定归还时间',
+back_time datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '归还时间',
+borrow_status tinyint(10) NOT NULL DEFAULT 1 COMMENT '状态 1-借出，2-归还，3-丢失',
+admin_id int(11) NOT NULL DEFAULT 0 COMMENT '管理员id',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='借阅关系表';
+
+
