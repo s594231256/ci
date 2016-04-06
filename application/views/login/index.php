@@ -1,26 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Bootstrap Login Form Template</title>
 
         <!-- CSS -->
-        <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">-->
         <link rel="stylesheet" href="<?echo base_url()?>include/bootstrap/assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?echo base_url()?>include/bootstrap/assets/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?echo base_url()?>include/bootstrap/assets/css/form-elements.css">
         <link rel="stylesheet" href="<?echo base_url()?>include/bootstrap/assets/css/style.css">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <!-- Favicon and touch icons -->
         <link rel="shortcut icon" href="<?echo base_url()?>include/bootstrap/assets/ico/favicon.png">
@@ -29,10 +19,14 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?echo base_url()?>include/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="<?echo base_url()?>include/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
 
+        <!-- Javascript -->
+        <script src="<?echo base_url()?>include/bootstrap/assets/js/jquery-1.11.1.min.js"></script>
+        <script src="<?echo base_url()?>include/bootstrap/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?echo base_url()?>include/bootstrap/assets/js/jquery.backstretch.min.js"></script>
+        <script src="<?echo base_url()?>include/bootstrap/assets/js/scripts.js"></script>
+
     </head>
-
     <body>
-
         <!-- Top content -->
         <div class="top-content">
 
@@ -60,14 +54,14 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="post" class="login-form">
+			                    <form role="form" action="<?php echo site_url('login/check_login')?>" method="post" class="login-form">
 			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="form-username" value="" placeholder="用户名..." class="form-username form-control" id="form-username">
+			                    		<label class="sr-only" for="username">Username</label>
+			                        	<input type="text" autocomplete="off" name="username" value="" placeholder="用户名..." class="username form-control" id="username">
 			                        </div>
 			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="form-password" placeholder="密码..." class="form-password form-control" id="form-password">
+			                        	<label class="sr-only" for="password">Password</label>
+			                        	<input type="password" autocomplete="off" name="password" placeholder="密码..." class="password form-control" id="password">
 			                        </div>
 			                        <button type="submit" class="btn">登录</button>
 			                    </form>
@@ -93,13 +87,5 @@
                 </div>
             </div>
         </div>
-
-        <!-- Javascript -->
-        <script src="<?echo base_url()?>include/bootstrap/assets/js/jquery-1.11.1.min.js"></script>
-        <script src="<?echo base_url()?>include/bootstrap/assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="<?echo base_url()?>include/bootstrap/assets/js/jquery.backstretch.min.js"></script>
-        <script src="<?echo base_url()?>include/bootstrap/assets/js/scripts.js"></script>
-
     </body>
-
 </html>
