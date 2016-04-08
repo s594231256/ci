@@ -10,6 +10,7 @@ jQuery
 2，bootstrap中文网 http://www.bootcss.com/
 3，ci框架官网 http://codeigniter.org.cn/
 4，bootstrap表单构造器 http://www.bootcss.com/p/bootstrap-form-builder/
+5，bootstrap时间控件 http://www.bootcss.com/p/bootstrap-datetimepicker/
 
 application/config/autoload.php自动加载 session
 MY_model继承CI_model,application/config/autoload.php自动加载modle

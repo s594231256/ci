@@ -7,6 +7,7 @@ class Books_model extends MY_model {
         $this->load->database();
     }
 
+    //列表搜索获取图书
     public function get_books($book_name,$category)
     {
         if(!empty($book_name))
@@ -21,6 +22,13 @@ class Books_model extends MY_model {
         return $query;
     }
 
+    //根据id获取图书
+    public function get_books_by_id($book_id)
+    {
+        $query = $this->db->get_where('books',array('id'=>$book_id))->row_array();
+        return $query;
+    }
+
     public function create_book($params)
     {
         $datetime = date('Y-m-d H:i:s');
@@ -30,5 +38,13 @@ class Books_model extends MY_model {
         $this->db->set('location',$params['location']);
         $this->db->set('create_time',$datetime);
         return $this->db->insert('books');
+    }
+
+    //修改图书状态
+    public function change_book_status($book_id,$status)
+    {
+        $data = array('status' => $status);
+        $query = $this->db->update('books', $data, "id = ".$book_id);
+        return $query;
     }
 }

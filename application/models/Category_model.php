@@ -29,4 +29,16 @@ class Category_model extends MY_model {
         return $id_name;
     }
 
+    public function create_category($category_name)
+    {
+        $query = $this->db->insert('book_category', array('category_name'=>$category_name));
+        return $query;
+    }
+
+    public function edit_category($category_id,$category_name)
+    {
+        $query = $this->db->update('book_category', array('category_name'=>$category_name), "id = ".$category_id);
+        return $query;
+    }
+
 }
