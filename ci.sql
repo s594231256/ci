@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-04-07 18:56:44
+Date: 2016-04-08 19:00:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,18 +46,18 @@ CREATE TABLE `book_borrow` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
   `book_id` int(11) NOT NULL DEFAULT '0' COMMENT '图书id',
-  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
-  `borrow_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '借书时间',
-  `expect_back_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '约定归还时间',
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间-借书时间',
+  `expect_back_time` date NOT NULL DEFAULT '0000-00-00' COMMENT '约定归还时间',
   `back_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '归还时间',
   `borrow_status` tinyint(10) NOT NULL DEFAULT '1' COMMENT '状态 1-借出，2-归还，3-丢失',
   `admin_id` int(11) NOT NULL DEFAULT '0' COMMENT '管理员id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='借阅关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='借阅关系表';
 
 -- ----------------------------
 -- Records of book_borrow
 -- ----------------------------
+INSERT INTO `book_borrow` VALUES ('5', '1', '1', '2016-04-08 17:10:46', '2016-04-09', '2016-04-08 17:23:06', '2', '1');
 
 -- ----------------------------
 -- Table structure for `book_category`
@@ -67,13 +67,14 @@ CREATE TABLE `book_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(60) NOT NULL DEFAULT '' COMMENT '分类名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='图书分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='图书分类表';
 
 -- ----------------------------
 -- Records of book_category
 -- ----------------------------
 INSERT INTO `book_category` VALUES ('1', '文学');
 INSERT INTO `book_category` VALUES ('2', '经济');
+INSERT INTO `book_category` VALUES ('3', '测试新增1');
 
 -- ----------------------------
 -- Table structure for `news`
@@ -116,4 +117,4 @@ CREATE TABLE `user_info` (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0', '1');
+INSERT INTO `user_info` VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '12', '1');
