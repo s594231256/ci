@@ -6,12 +6,11 @@
 
 </head>
 
-<frameset rows="180,*,27" frameborder="no" border="0" framespacing="0">
+<frameset rows="130,*" frameborder="no" border="0" framespacing="0">
   <frame src="<?php echo site_url("frameset/top") ?>" name="topFrame" scrolling="no">
-  <frameset rows="*" cols="151,*" name="ecc" framespacing="0" frameborder="no" border="0">
-    <frame src="<?php echo site_url("frameset/menu") ?>" name="mainFrame" border="0" scrolling="no">
-    <frame src="<?php echo site_url("frameset/main") ?>" name="rightFrame" scrolling="auto">
+  <frameset rows="*" cols="230,*" name="ecc" framespacing="0" frameborder="no" border="0">
+      <frame src="<?php echo site_url("frameset/menu") ?>" name="menuFrame" border="0" scrolling="no" height="100%">
+    <frame src="<?php echo site_url("frameset/main") ?>" name="mainFrame" scrolling="auto">
   </frameset>
-  <!--<frame src="<?php echo site_url("frameset/bottom") ?>" name="bottomFrame" scrolling="no">-->
 </frameset>
 </html>

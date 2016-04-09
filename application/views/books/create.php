@@ -1,4 +1,4 @@
-<section class="content-header"><h2>新建图书</h2></section>
+<section class="content-header"><h2>添加图书</h2></section>
 <form role="form" action="<?php echo site_url('books/create')?>" method="post" class="login-form">
 <section class="content">
   <div class="panel">

@@ -1,6 +1,7 @@
 <?php
 class book_borrow_model extends MY_model {
 
+    public $borrow_status = array(1=>'借出',2=>'归还',3=>'丢失');
     public function __construct()
     {
         parent::__construct();
@@ -42,6 +43,13 @@ class book_borrow_model extends MY_model {
             return false;
         }
         return true;
+    }
+    
+    //获取用户借书记录
+    public function get_borrow_history($user_id)
+    {
+        $query = $this->db->get_where('book_borrow',array('user_id'=>$user_id))->result_array();
+        return $query;
     }
 
 }

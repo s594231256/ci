@@ -92,7 +92,6 @@
                 <label class="control-label col-sm-3" for="back_time">归还日期</label>
                 <div class="input-group date col-md-9" style="padding-left: 15px;padding-right: 15px;" data-date="" data-date-format="" data-link-field="back_time">
                     <input id="back_time" name="back_time" class="form-control" size="16" type="text" value="" readonly>
-				    <span class="input-group-addon" id="back_time_span"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
                 <div class="col-sm-offset-3 col-sm-9"></div>
                 <div class="col-sm-offset-3 col-sm-9"><div class="help-block"></div></div>
@@ -198,6 +197,7 @@ $(function(){
             url:  "<?php echo site_url('books/book_borrow');?>",
             data: {book_id:book_id,student_code:student_code,back_time:back_time},
             dataType:"json",
+            cache:false,
             success: function (msg) {
                 if(msg.code){
                 	alert('操作成功！');
@@ -220,6 +220,7 @@ $(function(){
             url:  "<?php echo site_url('books/book_back_info');?>",
             data: {book_id:book_id},
             dataType:"json",
+            cache:false,
             success: function (msg) {
                 $('#student_code_back').html(msg.student_code);
                 $('#borrow_time').html(msg.borrow_time);
@@ -236,6 +237,7 @@ $(function(){
             url:  "<?php echo site_url('books/book_back');?>",
             data: {book_id:book_id},
             dataType:"json",
+            cache:false,
             success: function (msg) {
                 if(msg.code){
                 	alert('操作成功！');
@@ -257,6 +259,7 @@ $(function(){
                 url:  "<?php echo site_url('books/book_on_off');?>",
                 data: {book_id:book_id,book_status:3},
                 dataType:"json",
+                cache:false,
                 success: function (msg) {
                     if(msg.code){
                         alert('操作成功！');
@@ -279,6 +282,7 @@ $(function(){
                 url:  "<?php echo site_url('books/book_on_off');?>",
                 data: {book_id:book_id,book_status:1},
                 dataType:"json",
+                cache:false,
                 success: function (msg) {
                     if(msg.code){
                         alert('操作成功！');

@@ -14,5 +14,6 @@
     </head>
     <style>
         .my-margin-top{margin-top: 15px;}
+        body{padding-top: 50px;padding-left: 100px;}
     </style>
     <body>

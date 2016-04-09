@@ -1,6 +1,7 @@
 <?php
 class Books_model extends MY_model {
 
+    public $book_status = array(1=>'可用',2=>'借出',3=>'下架');
     public function __construct()
     {
         parent::__construct();
@@ -28,7 +29,7 @@ class Books_model extends MY_model {
         $query = $this->db->get_where('books',array('id'=>$book_id))->row_array();
         return $query;
     }
-
+    
     public function create_book($params)
     {
         $datetime = date('Y-m-d H:i:s');

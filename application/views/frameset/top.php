@@ -5,34 +5,31 @@
 <script src="<?php echo base_url()?>include/jquery-2.0.3.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="<?php echo base_url()?>include/bootstrap/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="<?php echo base_url()?>include/css/style.css">
-<div class="headder">
-        <div class="container">				
-                <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                                <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                                <span class="sr-only">Toggle navigation</span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                        </button>
-                                    <a class="navbar-brand" href="index.html"> <img width="100px;" height="100px;" src="<?php echo base_url()?>include/images/book-top.jpg" alt=""> </a>
-                                </div>
-                                <!-- Collect the nav links, forms, and other content for toggling -->
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                        <ul class="nav navbar-nav navbar-right">
-                                                <li><a href="index.html" class="active">Home</a></li>
-                                                <li><a href="#about" class="scroll">About us</a></li>
-                                                <li><a href="#services" class="scroll">Services</a></li>
-                                                <li><a href="#testimonials" class="scroll">Testimonials</a></li>
-                                                <li><a href="#gallery" class="scroll">Gallery</a></li>
-                                                <li><a href="#contact" class="scroll">Contact</a></li>
-                                        </ul>	
-                                </div>	
-                                <div class="clearfix"> </div>
-                        </div>	
-                </nav>				
-        </div>	
+<style>
+    .headder{background: rgba(39, 39, 39, 0.87);}   
+</style>
+<div class="headder" style="height:130px;">
+<div class="navbar navbar-duomi navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="javascript:void(0);" id="logo" style="color:white;"><h1>图书管理系统</h1></a>
+        </div>
+        <div class="navbar-header">
+            <img style="width:100px;height:100px;margin-top: 17px;margin-left: 100px;" src="<?php echo base_url()?>include/images/girl.png" alt="">
+        </div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <!--<li><a href="#">Link</a></li>-->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" id="dropdown-toggle_set" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-bottom:50px;color:white;background: rgba(39, 39, 39, 0.87);"><h2>设置<span class="caret"></span></h2> </a>
+          <ul class="dropdown-menu" style="margin-top:-50px;">
+            <li><a href="#">退出登录</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">修改密码</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+    </div>
+</div>
 </div>

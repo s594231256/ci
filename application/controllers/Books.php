@@ -24,7 +24,7 @@ class Books extends CI_Controller {
         $data['category'] = $this->category_model->get_all_category();
         $data['books'] = $this->books_model->get_books($book_name,$category);
         $data['id_name'] = $this->category_model->get_category_id_name();
-        $data['status'] = array(1=>'可用',2=>'借出',3=>'下架');
+        $data['status'] = $this->books_model->book_status;
         $data['param'] = $param;
 
         $this->load->view('templates/header', array('title'=>'图书列表'));
