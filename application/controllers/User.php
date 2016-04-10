@@ -62,4 +62,27 @@ class User extends CI_Controller {
         $this->load->view('templates/header', array('title'=>'修改用户'));
         $this->load->view('user/create',$data);
     }
+    
+    //借书记录
+    public function borrow_history()
+    {
+        $user_id = $this->input->get('user_id');
+        $data['borrow_history'] = $this->book_borrow_model->get_borrow_history($user_id);
+        $borrow_status = $this->book_borrow_model->borrow_status;
+        if(!empty($data['borrow_history']))
+        {
+            foreach($data['borrow_history'] as $k=>$v)
+            {
+                $book_info = $this->books_model->get_books_by_id($v['book_id']);
+                $data['borrow_history'][$k]['book_name'] = empty($book_info) ? '' : $book_info['book_name'];
+                $data['borrow_history'][$k]['status'] = $borrow_status[$v['borrow_status']];
+                $admin = $this->user_model->get_user_by_id($v['admin_id']);
+                $data['borrow_history'][$k]['admin'] = empty($admin) ? '' : $admin['username'];
+            }
+        }
+        $data['user_info'] = $this->user_model->get_user_by_id($user_id);
+        
+        $this->load->view('templates/header', array('title'=>'借书记录'));
+        $this->load->view('user/borrow_history', $data);
+    }
 }
