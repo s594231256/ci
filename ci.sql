@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
-Source Server Version : 50540
+Source Server         : localhost
+Source Server Version : 50617
 Source Host           : localhost:3306
 Source Database       : ci
 
 Target Server Type    : MYSQL
-Target Server Version : 50540
+Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-04-08 19:00:52
+Date: 2016-04-10 15:58:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,12 +52,14 @@ CREATE TABLE `book_borrow` (
   `borrow_status` tinyint(10) NOT NULL DEFAULT '1' COMMENT '状态 1-借出，2-归还，3-丢失',
   `admin_id` int(11) NOT NULL DEFAULT '0' COMMENT '管理员id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='借阅关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='借阅关系表';
 
 -- ----------------------------
 -- Records of book_borrow
 -- ----------------------------
-INSERT INTO `book_borrow` VALUES ('5', '1', '1', '2016-04-08 17:10:46', '2016-04-09', '2016-04-08 17:23:06', '2', '1');
+INSERT INTO `book_borrow` VALUES ('5', '1', '1', '2016-04-08 17:10:46', '2016-04-09', '2016-04-09 12:21:07', '2', '1');
+INSERT INTO `book_borrow` VALUES ('6', '4', '1', '2016-04-09 11:24:47', '2016-04-16', '2016-04-09 12:21:07', '2', '1');
+INSERT INTO `book_borrow` VALUES ('7', '4', '3', '2016-04-09 11:24:55', '2016-04-21', '2016-04-09 12:21:33', '2', '1');
 
 -- ----------------------------
 -- Table structure for `book_category`
@@ -112,9 +114,13 @@ CREATE TABLE `user_info` (
   `user_type` tinyint(10) NOT NULL DEFAULT '2' COMMENT '用户类型：1-管理员，2-学生',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
 INSERT INTO `user_info` VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '12', '1');
+INSERT INTO `user_info` VALUES ('2', '测试1', '', '123@qq.com', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456', '2');
+INSERT INTO `user_info` VALUES ('3', '测试2', '', 'dsdfg', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '3333', '2');
+INSERT INTO `user_info` VALUES ('4', '测试3', '123456', '123123@qq.com', '1', '2016-04-09 10:45:46', '0000-00-00 00:00:00', '66666', '2');
+INSERT INTO `user_info` VALUES ('5', 'admin2', '4297f44b13955235245b2497399d7a93', '123123@qq.com', '1', '2016-04-09 10:46:44', '0000-00-00 00:00:00', '0', '1');
