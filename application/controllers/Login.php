@@ -16,7 +16,13 @@ class Login extends CI_Controller {
         $name = $this->session->userdata('username');
         if(!empty($name))
         {
-            redirect('frameset');
+            $top_logo = $this->input->get('top_logo');
+            if(empty($top_logo))
+            {
+                redirect('frameset');
+            }else{
+                $this->load->view('frameset/main');
+            }
         }else{
             $this->load->view('login/index');
         }
@@ -35,6 +41,12 @@ class Login extends CI_Controller {
             //$name = $this->session->userdata('userid');
             redirect('frameset');
         }
+    }
+    
+    public function login_out()
+    {
+        $this->session->unset_userdata(array('username','userid'));
+        echo "<script>window.top.location.href='".site_url("login/index")."'</script>";
     }
 
 }

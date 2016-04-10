@@ -51,5 +51,12 @@ class book_borrow_model extends MY_model {
         $query = $this->db->get_where('book_borrow',array('user_id'=>$user_id))->result_array();
         return $query;
     }
+    
+    //获取借书记录
+    public function get_all_borrow_history()
+    {
+        $query = $this->db->get_where('book_borrow')->result_array();
+        return $query;
+    }
 
 }

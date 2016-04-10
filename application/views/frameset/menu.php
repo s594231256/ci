@@ -23,9 +23,15 @@
                     <a target="mainFrame"href="<?php echo site_url("user/index") ?>"><i class="glyphicon glyphicon-user"></i>用户管理</a>
                 </li>
                 <li>
-                    <a target="mainFrame"href="<?php echo site_url("borrow/index") ?>"><i class="glyphicon glyphicon-calendar"></i>历史记录</a>
+                    <a target="mainFrame"href="<?php echo site_url("book_borrow/index") ?>"><i class="glyphicon glyphicon-calendar"></i>历史记录</a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
+<script>
+$('li').click(function(){
+    $(this).addClass('active');
+    $(this).siblings().removeClass('active');
+})
+</script>

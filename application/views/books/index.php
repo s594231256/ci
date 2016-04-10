@@ -41,7 +41,10 @@
     <td>状态</td>
     <td>操作</td>
   </tr>
-  <?php foreach($books as $v){?>
+  <?php 
+  if(!empty($books))
+  {
+    foreach($books as $v){?>
   <tr class="active">
     <td><?php echo $v['id'];?></td>
     <td><?php echo $v['book_name'];?></td>
@@ -66,7 +69,7 @@
       }?>
     </td>
   </tr>
-  <?php }?>
+  <?php }}?>
 </table>
 </div>
     <!-- Modal 借书 -->

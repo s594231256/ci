@@ -12,24 +12,32 @@
 <div class="navbar navbar-duomi navbar-static-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="javascript:void(0);" id="logo" style="color:white;"><h1>图书管理系统</h1></a>
+            <a class="navbar-brand" target="mainFrame" href="<?php echo site_url("login/index?top_logo=1") ?>" id="logo" style="color:white;"><h1>图书管理系统</h1></a>
         </div>
         <div class="navbar-header">
             <img style="width:100px;height:100px;margin-top: 17px;margin-left: 100px;" src="<?php echo base_url()?>include/images/girl.png" alt="">
         </div>
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <!--<li><a href="#">Link</a></li>-->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" id="dropdown-toggle_set" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-bottom:50px;color:white;background: rgba(39, 39, 39, 0.87);"><h2>设置<span class="caret"></span></h2> </a>
-          <ul class="dropdown-menu" style="margin-top:-50px;">
-            <li><a href="#">退出登录</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">修改密码</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav nav-pills navbar-right" style="margin-top:10px;">
+                <li role="presentation"><a href="javascript:void(0);" id="login_out" style="color:whitesmoke;"><h3>退出登录</h3></a></li>
+                <!--<li role="presentation"><a href="#" style="color:whitesmoke;"><h3>修改密码</h3></a></li>-->
+            </ul>
+        </div>
     </div>
 </div>
 </div>
+<script>
+$(function(){
+    $('#login_out').mouseover(function(){
+        $(this).css('background','#696969');
+    })
+    $('#login_out').mouseout(function(){
+        $(this).css('background','');
+    })
+    $('#login_out').click(function(){
+        if(confirm('确定退出登录吗？')){
+            window.location.href='<?php echo site_url("login/login_out") ?>';
+        }
+    })
+})
+</script>
