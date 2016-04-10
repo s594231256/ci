@@ -2,7 +2,7 @@ application/config/config.php $config['base_url'] = 自己配置的虚拟主机;
 
 ci框架mvc开发模式
 bootstrap前端开发工具包html5页面
-phpstudy集成开发环境 php5.3，apache，mysql
+wampserver集成开发环境 php5.3，apache，mysql
 jQuery
 
 参考文献：
@@ -16,10 +16,48 @@ application/config/autoload.php自动加载 session
 MY_model继承CI_model,application/config/autoload.php自动加载modle
 
 准备工作
-打开虚拟主机扩展
+1，安装wampserver
+
+2，进入wampserver安装目录的www文件夹，新建文件夹 ci 点击进入
+右键 git bash here
+输入 git init 
+git clone https://github.com/s594231256/ci.git
+
+3，打开虚拟主机扩展
 位置 wamp\bin\apache\apache2.4.9\conf
+打开文件 httpd.conf
+打开注释 Include conf/extra/httpd-vhosts.conf
 
-打开 Include conf/extra/httpd-vhosts.conf
+4，配置虚拟主机
+位置wamp\bin\apache\apache2.4.9\conf\extra  
+打开文件 httpd-vhosts.conf
 
-配置虚拟主机
-wamp\bin\apache\apache2.4.9\conf\extra  httpd-vhosts.conf  
+ServerAdmin 是邮箱，随便写
+DocumentRoot 是文件位置
+ServerName 是浏览器访问url
+
+写入
+<VirtualHost *:80>
+    ServerAdmin 594231256@qq.com
+    DocumentRoot "D:/wamp/www/ci/ci"
+    ServerName mybook
+</VirtualHost>
+
+5，配置本机host
+C:\Windows\System32\drivers\etc
+打开 HOSTS 文件
+
+写入 127.0.0.1 mybook
+
+6,配置数据库
+
+
+修改数据库密码
+位置 D:\wamp\bin\mysql\mysql5.6.17
+打开 my.ini
+最后一行写 skip-grant-tables
+重启 wamp
+进入mysql console 直接回车
+输入set password for root@localhost = password('123');
+
+

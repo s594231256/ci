@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
@@ -112,8 +112,7 @@ CREATE TABLE `user_info` (
   `updatetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
   `student_code` varchar(50) NOT NULL DEFAULT '0' COMMENT '学号',
   `user_type` tinyint(10) NOT NULL DEFAULT '2' COMMENT '用户类型：1-管理员，2-学生',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`) USING BTREE
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
