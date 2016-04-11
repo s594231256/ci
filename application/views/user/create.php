@@ -40,6 +40,8 @@
          <li><a id="2" href='javascript:void(0);'>学生</a></li>
     </ul>
   <input type="hidden" name="user_type" id="user_type" value="<?php if(!empty($user_info['user_type']))echo $user_info['user_type'];?>"/>
+  <input type="hidden" name="act" id="act" value="<?php echo $act;?>"/>
+  <input type="hidden" name="user_id" id="user_id" value="<?php echo empty($user_id) ? '' : $user_id;?>"/>
   </div>
   </div>
 </section>
@@ -76,12 +78,6 @@ $(function(){
                 alert('请填写学号');
                 return false;
             }
-        }
-        var password = $.trim($('#password').val());
-        if(password == '')
-        {
-            alert('请填写密码');
-            return false;
         }
         $('.login-form').submit();
     })

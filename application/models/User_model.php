@@ -52,5 +52,27 @@ class User_model extends MY_model {
         $this->db->set('createtime',$datetime);
         return $this->db->insert('user_info');
     }
+    
+    //修改用户
+    public function edit_user($params)
+    {
+        $datetime = date('Y-m-d H:i:s');
+        $this->db->set('username',$params['user_name']);
+        if(!empty($params['student_code']))
+        {
+            $this->db->set('student_code',$params['student_code']);
+        }
+        if(!empty($params['mail']))
+        {
+            $this->db->set('password',md5($params['password']));
+        }
+        if(!empty($params['mail']))
+        {
+            $this->db->set('email',$params['mail']);
+        }
+        $this->db->set('user_type',$params['user_type']);
+        $this->db->where('id', $params['user_id']);
+        return $this->db->update('user_info');
+    }
 
 }

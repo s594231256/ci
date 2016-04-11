@@ -1,14 +1,14 @@
 <?php
-class User extends CI_Controller {
+class User extends MY_Controller {
 
     public function __construct()
     {
         parent::__construct();
+        $this->crud_model->permission();
         $this->load->model('books_model');
         $this->load->model('category_model');
         $this->load->model('user_model');
         $this->load->model('book_borrow_model');
-        $this->load->helper('url_helper');
     }
 
     //首页列表和搜索
@@ -46,20 +46,29 @@ class User extends CI_Controller {
         $post = $this->input->post();
         if(empty($post))
         {
-            $this->load->view('templates/header', array('title'=>'添加用户'));
+            $data['title'] = '添加用户';
+            $data['act'] = 'create';
+            $this->load->view('templates/header', array('title'=>$data['title']));
             $this->load->view('user/create');
         }else{
-            $result = $this->user_model->create_user($post);
+            if($post['act'] == 'create')
+            {
+                $result = $this->user_model->create_user($post);
+            }else{
+                $result = $this->user_model->edit_user($post);
+            }
             redirect('user');
         }
     }
     
     public function edit()
     {
-        $user_id = $this->input->get('user_id');
-        $data['user_info'] = $this->user_model->get_user_by_id($user_id);
+        $data['user_id'] = $this->input->get('user_id');
+        $data['user_info'] = $this->user_model->get_user_by_id($data['user_id']);
         
-        $this->load->view('templates/header', array('title'=>'修改用户'));
+        $data['title'] = '添加用户';
+        $data['act'] = 'edit';
+        $this->load->view('templates/header', array('title'=>$data['title']));
         $this->load->view('user/create',$data);
     }
     

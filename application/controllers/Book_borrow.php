@@ -1,5 +1,5 @@
 <?php
-class Book_borrow extends CI_Controller {
+class Book_borrow extends MY_Controller {
 
     public function __construct()
     {
@@ -8,13 +8,21 @@ class Book_borrow extends CI_Controller {
         $this->load->model('category_model');
         $this->load->model('user_model');
         $this->load->model('book_borrow_model');
-        $this->load->helper('url_helper');
     }
 
     //首页列表和搜索
     public function index()
     {
-        $data['book_borrow_info'] = $this->book_borrow_model->get_all_borrow_history();
+        $user_type = $this->session->userdata('user_type');
+        if($user_type == 1)
+        {
+            //管理员可以看到全部历史记录
+            $data['book_borrow_info'] = $this->book_borrow_model->get_all_borrow_history();
+        }else{
+            //学生只能看到自己的历史记录
+            $user_id = $this->session->userdata('userid');
+            $data['book_borrow_info'] = $this->book_borrow_model->get_borrow_history($user_id);
+        }
         if(!empty($data['book_borrow_info']))
         {
             foreach ($data['book_borrow_info'] as $k=>$v)

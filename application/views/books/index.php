@@ -26,7 +26,9 @@
   <div class="form-group col-md-5" style="margin-top: 22px;">
     <button type="submit" class="btn btn-success">搜索</button>
     <button type="button" id="reset" class="btn btn-success">重置</button>
+    <?php if($user_type == 1){?>
     <a style="margin-left: 22px;" class="btn btn-success" href="<?php echo site_url('books/create')?>">新增图书</a>
+    <?php }?>
   </div>
 </form>
 </div>
@@ -37,6 +39,7 @@
     <td>id</td>
     <td>书名</td>
     <td>分类</td>
+    <td>位置</td>
     <td>简介</td>
     <td>状态</td>
     <td>操作</td>
@@ -49,9 +52,11 @@
     <td><?php echo $v['id'];?></td>
     <td><?php echo $v['book_name'];?></td>
     <td><?php echo $id_name[$v['category']];?></td>
+    <td><?php echo $v['location'];?></td>
     <td><?php echo $v['content'];?></td>
     <td><?php echo $status[$v['status']];?></td>
     <td>
+    <?php if($user_type == 1){?>
       <?php if($v['status'] == 1){ ?>
 
       <a href="#myModal" role="button" class="btn btn-primary btn-xs btn-sm book_borrow" data-toggle="modal" data-id="<?php echo $v['id'];?>" data-name="<?php echo $v['book_name'];?>">借书</a>&nbsp;
@@ -66,7 +71,7 @@
 //          echo "<a class='btn btn-success btn-xs btn-sm' href='".site_url('books/book_back')."'>还书</a>&nbsp;";
       }else{
           echo "<a data-id='".$v['id']."' class='btn btn-default btn-xs btn-sm book_on' href='javascript:void(0);'>上架</a>&nbsp;";
-      }?>
+    }}?>
     </td>
   </tr>
   <?php }}?>

@@ -1,11 +1,11 @@
 <?php
-class Category extends CI_Controller {
+class Category extends MY_Controller {
 
     public function __construct()
     {
         parent::__construct();
+        $this->crud_model->permission();
         $this->load->model('category_model');
-        $this->load->helper('url_helper');
     }
 
     //首页列表和搜索

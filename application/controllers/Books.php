@@ -1,5 +1,5 @@
 <?php
-class Books extends CI_Controller {
+class Books extends MY_Controller {
 
     public function __construct()
     {
@@ -8,7 +8,7 @@ class Books extends CI_Controller {
         $this->load->model('category_model');
         $this->load->model('user_model');
         $this->load->model('book_borrow_model');
-        $this->load->helper('url_helper');
+        $this->load->model('crud_model');
     }
 
     //首页列表和搜索
@@ -26,6 +26,8 @@ class Books extends CI_Controller {
         $data['id_name'] = $this->category_model->get_category_id_name();
         $data['status'] = $this->books_model->book_status;
         $data['param'] = $param;
+        
+        $data['user_type'] = $this->session->userdata('user_type');
 
         $this->load->view('templates/header', array('title'=>'图书列表'));
         $this->load->view('books/index', $data);
@@ -34,6 +36,7 @@ class Books extends CI_Controller {
     //新增图书
     public function create()
     {
+        $this->crud_model->permission();
         $post = $this->input->post();
         if(empty($post))
         {
@@ -50,6 +53,7 @@ class Books extends CI_Controller {
     //借书
     public function book_borrow()
     {
+        $this->crud_model->permission();
         $book_id = $this->input->get('book_id');
         $student_code = $this->input->get('student_code');
         $back_time = $this->input->get('back_time');
@@ -117,6 +121,7 @@ class Books extends CI_Controller {
     //还书,返回学生学号
     public function book_back_info()
     {
+        $this->crud_model->permission();
         $book_id = $this->input->get('book_id');
         $borrow_info = $this->book_borrow_model->get_info_by_bookid($book_id);
         $data['student_code'] = '';
@@ -137,6 +142,7 @@ class Books extends CI_Controller {
     //还书，修改状态
     public function book_back()
     {
+        $this->crud_model->permission();
         $book_id = $this->input->get('book_id');
         $back_status = $this->book_borrow_model->change_back_status($book_id);
         $data['code'] = 0;
@@ -150,6 +156,7 @@ class Books extends CI_Controller {
     //图书 上架,下架
     public function book_on_off()
     {
+        $this->crud_model->permission();
         $book_id = $this->input->get('book_id');
         $book_status = $this->input->get('book_status');
         $res = $this->books_model->change_book_status($book_id,$book_status);

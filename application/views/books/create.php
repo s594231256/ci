@@ -4,15 +4,15 @@
   <div class="panel">
   <div class="input-group col-md-4 my-margin-top">
     <span class="input-group-addon" id="basic-addon1">图书名称</span>
-    <input type="text" class="form-control" name="book_name" aria-describedby="basic-addon1">
+    <input type="text" class="form-control" id="book_name" name="book_name" aria-describedby="basic-addon1">
   </div>
   <div class="input-group col-md-4 my-margin-top">
     <span class="input-group-addon" id="basic-addon1">图书简介</span>
-    <input type="text" class="form-control" name="content" aria-describedby="basic-addon1">
+    <input type="text" class="form-control" id="content" name="content" aria-describedby="basic-addon1">
   </div>
   <div class="input-group col-md-4 my-margin-top">
     <span class="input-group-addon" id="basic-addon1">图书位置</span>
-    <input type="text" class="form-control" name="location" aria-describedby="basic-addon1">
+    <input type="text" class="form-control" id="location" name="location" aria-describedby="basic-addon1">
   </div>
   <div class="dropdown col-md-14 my-margin-top">
     <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,6 +47,33 @@ $(function(){
         $('#book_category').val(id);
     })
     $('#all-ok').click(function(){
+        var book_name = $.trim($('#book_name').val());
+        if(book_name == '')
+        {
+            alert('请填写图书名称');
+            return false;
+        }
+        
+        var content = $.trim($('#content').val());
+        if(content == '')
+        {
+            alert('请填写图书简介');
+            return false;
+        }
+        
+        var location = $.trim($('#location').val());
+        if(location == '')
+        {
+            alert('请填写图书位置');
+            return false;
+        }
+        
+        var book_category = $.trim($('#book_category').val());
+        if(book_category == '')
+        {
+            alert('请选择图书分类');
+            return false;
+        }
         $('.login-form').submit();
     })
 })

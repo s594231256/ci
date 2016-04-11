@@ -15,6 +15,10 @@ jQuery
 application/config/autoload.php自动加载 session
 MY_model继承CI_model,application/config/autoload.php自动加载modle
 
+除了登录都继承MY_Controller
+Codeigniter所有的控制器都必须继承CI_Controller类，但CI_Controller类位于system目录下，不太方便修改。为方便做一些公用的处理(比如检查是否登录)，通常情况下我们会在core下创建MY_Controller，用来继承CI_Controller，从而项目中所有的控制器继承MY_Controller。
+在application/core下面新建MY_Controller.php
+
 准备工作
 1，安装wampserver
 
@@ -60,4 +64,9 @@ C:\Windows\System32\drivers\etc
 进入mysql console 直接回车
 输入set password for root@localhost = password('123');
 
+
+改动
+1，修复用户管理的修改功能
+2，修复新增图书的验证
+3，学生可以登录，权限控制
 

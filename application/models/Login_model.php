@@ -20,14 +20,11 @@ class Login_model extends MY_model {
             //密码错误
             $result['code'] = 0;
             $result['msg'] = '密码错误';
-        }else if($query['user_type'] != 1){
-            //管理员
-            $result['code'] = 0;
-            $result['msg'] = '该用户不是管理员';
         }else{
             //登录成功
             $result['code'] = 1;
             $result['user_id'] = $query['id'];
+            $result['user_type'] = $query['user_type'];
             $result['msg'] = '登录成功';
         }
         return $result;

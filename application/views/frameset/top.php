@@ -19,7 +19,8 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav nav-pills navbar-right" style="margin-top:10px;">
-                <li role="presentation"><a href="javascript:void(0);" id="login_out" style="color:whitesmoke;"><h3>退出登录</h3></a></li>
+                <li role="presentation" style="color:whitesmoke;margin-top:10px;"><h3><?php echo $this->session->userdata('username');?></h3></li>
+                <li role="presentation"><a href="javascript:void(0);" class="top_con" id="login_out" style="color:whitesmoke;"><h3>退出登录</h3></a></li>
                 <!--<li role="presentation"><a href="#" style="color:whitesmoke;"><h3>修改密码</h3></a></li>-->
             </ul>
         </div>
@@ -28,10 +29,10 @@
 </div>
 <script>
 $(function(){
-    $('#login_out').mouseover(function(){
+    $('.top_con').mouseover(function(){
         $(this).css('background','#696969');
     })
-    $('#login_out').mouseout(function(){
+    $('.top_con').mouseout(function(){
         $(this).css('background','');
     })
     $('#login_out').click(function(){

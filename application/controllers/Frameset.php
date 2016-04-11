@@ -1,10 +1,9 @@
 <?php
 
-class Frameset extends CI_Controller {
+class Frameset extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper('url_helper');
     }
     function index() {
         $this->load->view('frameset/index');

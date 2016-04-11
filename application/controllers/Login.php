@@ -11,6 +11,7 @@ class Login extends CI_Controller {
         $this->load->helper('url_helper');
     }
 
+    //登录首页
     public function index()
     {
         $name = $this->session->userdata('username');
@@ -28,6 +29,7 @@ class Login extends CI_Controller {
         }
     }
 
+    //检查用户名密码
     public function check_login()
     {
         $name = $this->input->post('username');
@@ -37,15 +39,15 @@ class Login extends CI_Controller {
         {
             $this->load->view('login/index',$result);
         }else{
-            $this->session->set_userdata(array('username'=>$name,'userid'=>$result['user_id']));
-            //$name = $this->session->userdata('userid');
+            $this->session->set_userdata(array('username'=>$name,'userid'=>$result['user_id'],'user_type'=>$result['user_type']));
             redirect('frameset');
         }
     }
     
+    //退出登录
     public function login_out()
     {
-        $this->session->unset_userdata(array('username','userid'));
+        $this->session->unset_userdata(array('username','userid','user_type'));
         echo "<script>window.top.location.href='".site_url("login/index")."'</script>";
     }
 

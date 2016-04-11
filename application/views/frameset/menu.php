@@ -16,12 +16,14 @@
                 <li>
                     <a target="mainFrame"href="<?php echo site_url("books/index") ?>"><i class="glyphicon glyphicon-globe"></i>图书管理</a>
                 </li>
+                <?php if($this->session->userdata('user_type') == 1){?>
                 <li>
                     <a target="mainFrame"href="<?php echo site_url("category/index") ?>"><i class="glyphicon glyphicon-credit-card"></i>分类管理</a>      
                 </li>
                 <li>
                     <a target="mainFrame"href="<?php echo site_url("user/index") ?>"><i class="glyphicon glyphicon-user"></i>用户管理</a>
                 </li>
+                <?php }?>
                 <li>
                     <a target="mainFrame"href="<?php echo site_url("book_borrow/index") ?>"><i class="glyphicon glyphicon-calendar"></i>历史记录</a>
                 </li>
