@@ -1,0 +1,134 @@
+（一）前期准备工作
+
+一、确定需求
+1.1 登录功能
+1.2 图书管理系统得有图书列表，图书的新增和修改。
+1.3 借书和还书功能。
+1.4 用户添加和修改
+1.5 查看借书记录
+1.6 基本的权限管理，分为管理员和学生
+
+
+二、选择开发环境
+wampserver 一键安装，方便的集成环境
+w是Windows，a是Apache，m是mysql，p是PHP
+
+
+三、选择框架
+ci框架，ci框架有很多特点，小巧的框架，出色的性能，流行的mvc开发模式等等
+进入wampserver安装目录的www文件夹，将ci框架放在里面
+
+
+四、根据需求建立数据结构，建库建表
+数据库使用wampserver集成的mysql数据库
+数据库管理工具使用navicate
+由于wampserver的mysql默认密码为空，但是navicate初始密码不能为空
+所以需要修改数据库密码
+进入mysql console 直接回车
+输入set password for root@localhost = password('123');
+
+
+五、由于本人html和css只停留在欣赏阶段，不会编写，所以采用bootstrap前端开发工具包
+bootstrap很多大型网站都在用，高大上
+
+
+六、配置虚拟域名
+1，打开虚拟主机扩展
+位置 wamp\bin\apache\apache2.4.9\conf
+打开文件 httpd.conf
+打开注释 Include conf/extra/httpd-vhosts.conf
+
+2，配置虚拟主机
+位置wamp\bin\apache\apache2.4.9\conf\extra  
+打开文件 httpd-vhosts.conf
+
+ServerAdmin 是邮箱，随便写
+DocumentRoot 是文件位置
+ServerName 是浏览器访问url
+写入
+<VirtualHost *:80>
+    ServerAdmin 1234@qq.com
+    DocumentRoot "D:/wamp/www/ci/ci"
+    ServerName mybook
+</VirtualHost>
+
+3，配置本机host
+C:\Windows\System32\drivers\etc
+打开 HOSTS 文件
+
+写入 127.0.0.1 mybook
+
+重启wampserver 后即可在浏览器访问http://mybook
+
+前期准备工作到此完成，开始敲代码写功能
+
+（二）编写代码
+一、在编写代码前先了解一下ci框架的主要结构
+1，控制器写在controllers文件夹里。控制器不查询数据库，组装数据给视图
+2，模型写在models文件夹里。查询数据库
+3，视图写在views文件夹里。
+4，include文件夹存放的是css，js，和图片
+5，config里面是配置文件，主要用到的是数据库配置文件database.php,自动加载文件autoload.php和基础路径配置文件config.php
+
+二、登录功能
+1，新建一个登录控制器controllers/Login.php，模型models/Login_model.php和视图views/login/index.php
+
+2，登录界面不能太丑，我找到了1个Bootstrap登陆页面 http://www.gbtags.com/gb/share/5522.htm
+将登录页面放进视图里，在控制器使用 $this->load->view('login/index'); 调用视图文件
+用base_url()修改视图中的css和js路径，将英文改成期望的中文，写form表单，视图完毕
+
+3，在控制器中写检测用户名密码的方法 public function check_login()
+接受表单提交参数用户名和密码，传递给model(使用model之前要加载model，一般在控制器的构造方法里面使用$this->load->model('login_model'))，$this->login_model->check_login($name,$password)，
+
+在model的构造方法中先链接数据库$this->load->database()，然后查询数据库$this->db->get_where('user_info', array('username' => $name))->row_array()，再判断用户名是否存在，密码是否正确。
+4，若登录成功，则用户信息如用户名，用户id存放在session中
+$this->session->set_userdata(array('username'=>$name,'userid'=>$result['user_id'],'user_type'=>$result['user_type']));
+在config文件夹里的autoload.php中配置自动加载$autoload['libraries'] = array('session');
+然后跳转到首页 redirect('frameset')，redirect是从一个控制器跳转到另一个控制的方法。登录功能完成
+
+
+三、搭建frameset框架
+1，一般后台都会使用frameset搭建T型框架，上方显示系统名称，logo和退出登录按钮，左侧为菜单，中间是功能显示窗口
+
+2，建立Frameset控制器和视图
+
+3，遇到了问题，点击左侧的菜单按钮，功能页面出现在主窗口？给views/frameset/menu.php的a链接加上target="mainFrame"属性,"mainFrame" 是Frameset主页面views/frameset/index.php的主窗口的name值
+
+4，去 bootstrap中文网 http://www.bootcss.com/ 找了一些菜单组件完成了头部和左侧菜单
+
+
+四，图书管理
+1，新建了header.php用于视图文件统一加载bootstrap的css和js
+2，步骤和登录一样，$this->load->view('books/index', $data)在$data中存放需要传递给视图的数据
+3，列表使用foreach循环，遍历显示数据
+4，时间控件使用bootstrap时间控件 http://www.bootcss.com/p/bootstrap-datetimepicker/
+5，添加页面的表单使用bootstrap表单构造器 http://www.bootcss.com/p/bootstrap-form-builder/
+6，添加提交表单时用jQuery验证不能为空
+7，查询，新增，修改等数据库操作的方法使用ci框架封装好的方法 http://codeigniter.org.cn/user_guide/database/index.html
+8，借书，还书使用bootstrap弹出层显示，用jQuery的ajax提交数据（ajax也是个技术点）
+9，搜索功能就是在查询的时候添加几个条件
+
+五，其他管理功能和图书管理类似
+
+六，判断是否登录
+在core文件夹下新建MY_Controller继承CI_Controller，判断登录session是否存在，别的控制器继承MY_Controller。注意！！登录控制器不要继承MY_Controller，因为登录之后才有登录session
+
+七，权限控制
+1，用户表中user_type字段标识了用户的角色，1为管理员，2为学生。管理员登录后能进行所有的操作，学生登录后只能查看图书列表和历史记录。
+2，在models里新建Crud_model.php，写方法public function permission()，通过session中的用户类型限制访问。
+3，在core/MY_Controller.php加载权限控制模型$this->load->model('crud_model');
+4，在分类管理controllers/Category.php和用户管理controllers/User.php的构造函数中写入$this->crud_model->permission();这样学生就不能方法这2个控制器中的任何方法
+5，图书管理controllers/Books.php的index方法不加权限限制，别的方法都加，然后views/books/index.php中将“新增图书”按钮和操作图书按钮加上条件限制，这样学生只能看到图书列表
+
+
+git也是一个技术点，大公司都在用。git是一个代码的版本库
+本程序源码地址
+https://github.com/s594231256/ci.git
+想要下载的同学可以下载安装 git 客户端
+右键 git bash here
+输入 git init 
+git clone https://github.com/s594231256/ci.git
+
+
+大功告成  呱唧呱唧
+
