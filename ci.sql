@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-04-26 00:31:52
+Date: 2016-04-27 18:57:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -120,8 +120,9 @@ CREATE TABLE `video` (
   `video_num` int(11) NOT NULL DEFAULT '0' COMMENT '观看次数',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='视频图书表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='视频图书表';
 
 -- ----------------------------
 -- Records of video
 -- ----------------------------
+INSERT INTO `video` VALUES ('1', '测试1', '测试1简介', '', '1', '0', '0000-00-00 00:00:00');
