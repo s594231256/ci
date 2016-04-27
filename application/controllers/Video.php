@@ -17,11 +17,18 @@ class Video extends MY_Controller {
         $data['param'] = $param;
         
         $data['video'] = $this->video_model->get_video();
-        $data['status'] = array(1=>'可以',2=>'下架');
+        $data['status'] = array(1=>'可用',2=>'下架');
         
         $data['user_type'] = $this->session->userdata('user_type');
 
         $this->load->view('templates/header', array('title'=>'视频列表'));
         $this->load->view('video/index', $data);
+    }
+    
+    public function watch()
+    {
+        $data = array();
+//        $this->load->view('templates/header', array('title'=>'视频列表'));
+        $this->load->view('video/watch', $data);
     }
 }
