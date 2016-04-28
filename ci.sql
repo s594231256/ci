@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50617
+Source Server         : 本地
+Source Server Version : 50540
 Source Host           : localhost:3306
 Source Database       : ci
 
 Target Server Type    : MYSQL
-Target Server Version : 50617
+Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-04-27 18:57:09
+Date: 2016-04-28 15:03:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -120,9 +120,10 @@ CREATE TABLE `video` (
   `video_num` int(11) NOT NULL DEFAULT '0' COMMENT '观看次数',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='视频图书表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='视频图书表';
 
 -- ----------------------------
 -- Records of video
 -- ----------------------------
-INSERT INTO `video` VALUES ('1', '测试1', '测试1简介', '', '1', '0', '0000-00-00 00:00:00');
+INSERT INTO `video` VALUES ('1', '测试1', '测试1简介', 'testvideo.mp4', '1', '1', '0000-00-00 00:00:00');
+INSERT INTO `video` VALUES ('2', '测试2', '测试2简介', 'abcd.mp4', '1', '1', '0000-00-00 00:00:00');
